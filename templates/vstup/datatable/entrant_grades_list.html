@@ -1,0 +1,83 @@
+{% extends "vstup/base.html" %}
+{% load static %}
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}">
+<h2>Вступники, що допущені до іспитів</h2>
+<div class="pageholder">
+    <div class="linkholder">
+        <table id="entrantDataTable" class="myTable">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Прізвище</th>
+                <th>Ім'я</th>
+                <th>По-батькові</th>
+                <th>Спеціальність</th>
+                <th>Кафедра</th>
+                <th>Спец</th>
+                <th>Іноз</th>
+                <th>Досяг</th>
+                <th>Бал</th>
+                <th>Реком</th>
+                <th>Command</th>
+            </tr>
+            </thead>
+        </table>
+                <form method="post" action="{% url 'entrant_grades_list' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Calculate</button>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        var table = $('#entrantDataTable').DataTable({
+            "ajax": {
+                "processing": true,
+                "url": "{% url 'entrants_grades_json' %}",
+                "dataSrc": "",
+            },
+            select: true,
+            "columns": [
+                {"data": "id", defaultContent: '', "visible": false},
+                {"data": "last_name"},
+                {"data": "name"},
+                {"data": "patronymic"},
+                {"data": "specialty__code"},
+                {"data": "department__shortName"},
+                {"data": "grade_specialty"},
+                {"data": "grade_foreign_language"},
+                {"data": "grade_scientific_achievements"},
+                {"data": "competition_score"},
+                {"data": "recommended"},
+                {"data": null},
+            ],
+
+            columnDefs: [
+                {
+                    targets: 10,  // Index of the recommended column
+                    render: function (data, type, row) {
+                        let recommendedIcon = row.recommended ? '<i class="fas fa-check"></i>' : '';
+                        return recommendedIcon;
+                    },
+                },
+                {
+                    targets: -1,
+                    render: function (data, type, row) {
+                        let c_edit = '<td><a href="/entrant_grades_edit/' + data.id + '" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a></td>';
+                        let c_del = "";
+                        return c_edit + c_del;
+                    },
+                }
+            ]
+        });
+    });
+</script>
+
+{% endblock %}

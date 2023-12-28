@@ -1,0 +1,21 @@
+{% extends "vstup/base.html" %}
+
+{% block content %}
+<div class="container text-start">
+
+    <div class="row my-2">
+        <h4>Назва скороч. - "{{department.shortName}}"</h4>
+    </div>
+
+    <div class="row my-2">
+        <h4>Назва - "{{department.name}}"</h4>
+    </div>
+
+     <div class="row my-2">
+         <p><strong>Спеціальності:</strong>
+         {% for item in department.specialties.all %}
+            <p><a href="/specialties/{{item.id}}">{{item.code}} {{item.name}}</a></p>
+         {% endfor %}
+     </div>
+</div>
+{% endblock %}

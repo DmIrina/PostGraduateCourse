@@ -1,0 +1,50 @@
+{% extends "vstup/base.html" %}
+{% block content %}
+
+<div class="row text-start lh-2">
+  <h5>Вищі навчальні заклади</h5>
+</div>
+
+<div class="row">
+  <div class="col-2 "></div>
+  <a href="/university/create/">Додати - </a> ,
+  <div class="col-8 ">
+    <table class="table table-striped table-bordered text-start">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Назва</th>
+          <th>Назва англійською</th>
+          <th>Скороч</th>
+          <th>Рівень</th>
+          <th>Фінансування</th>
+          <th>Розташування</th>
+          <th>Редагувати</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if universities %}
+        {% for item in universities.all %}
+        <tr>
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.enName}}</td>
+          <td>{{item.shortName}}</td>
+          <td>{{item.educationTypeName}}</td>
+          <td>{{item.financingTypeName}}</td>
+          <td>{{item.location}}</td>
+          <td>
+            <a href="/university/update/{{item.id}}">Змінити </a> ,
+            <a href="/university/delete/{{item.id}}">Видалити </a>
+          </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <p> Нічого нема</p>
+        {% endif %}
+        <tbody>
+        </table>
+      </div>
+      <div class="col-2"></div>
+    </div>
+    {% endblock %}

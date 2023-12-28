@@ -1,0 +1,27 @@
+{% extends "vstup/base.html" %}
+
+{% block content %}
+    <h4>Перелік спеціальностей</h4>
+   {% if specialties %}
+        <table class="table table-striped table-bordered text-start">
+            <thead>
+                <tr>
+                    <th>Код</th>
+                    <th>Назва спеціальності</th>
+                    <th>Кафедри, де відкрито спеціальність</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in specialties.all %}
+            <tr>
+              <td><a href="{{ item.id }}">{{ item.code }} </a></td>
+              <td> {{ item.name }} </td>
+              <td> {{ item.display_departments }} </td>
+            </tr>
+            {% endfor %}
+            <tbody>
+        </table>
+   {% else %}
+      <p>Нічого немає</p>
+    {% endif %}
+{% endblock %}

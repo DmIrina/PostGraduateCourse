@@ -1,0 +1,3 @@
+PATH=f:\projects\pgc\.venv\Scripts;C:\Program Files\ConEmu;C:\Program Files\ConEmu\ConEmu;C:\Program Files\Eclipse Adoptium\jdk-11.0.18.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Users\idmit\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\idmit\AppData\Local\Programs\Python\Python312\;C:\Users\idmit\AppData\Local\Microsoft\WindowsApps;F:\ProgramFiles\IntelliJ IDEA 2022.3.2\IntelliJ IDEA 2023.1\bin;;C:\Program Files\JetBrains\WebStorm 2023.2.2\bin;;C:\Users\idmit\AppData\Roaming\npm;C:\Users\idmit\AppData\Local\Programs\Hyper\resources\bin;
+.venv\scripts\activate
+python manage.py runserver

@@ -1,0 +1,46 @@
+{% extends "vstup/base.html" %}
+
+{% block content %}
+
+<div id="successModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>{{ success_message }}</p>
+
+      <table class="table">
+
+           <tbody>
+             <tr>
+               <td><strong>{{ form.last_name.label}}</strong></td>
+               <td>{{ form.last_name.value }}</td>
+             </tr>
+             <tr>
+               <td><strong>{{ form.name.label}}</strong></td>
+               <td>{{ form.name.value }}</td>
+             </tr>
+             <tr>
+               <td><strong>{{ form.patronymic.label}}</strong></td>
+               <td>{{ form.patronymic.value }}</td>
+             </tr>
+             <tr>
+               <td><strong>Електронна черга</strong></td>
+               <td>{{ eq }}</td>
+             </tr>
+           </tbody>
+         </table>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var modal = document.getElementById('successModal');
+    modal.style.display = 'block';
+
+    var closeBtn = document.querySelector('.close');
+    closeBtn.addEventListener('click', function () {
+      modal.style.display = 'none';
+    });
+  });
+</script>
+
+{% endblock %}

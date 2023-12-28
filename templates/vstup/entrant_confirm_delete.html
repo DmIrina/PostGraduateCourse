@@ -1,0 +1,12 @@
+{% extends "vstup/base.html" %}
+{% block content %}
+
+<h1>Видалення даних про вступника</h1>
+<p> Видалити дані: {{ entrant }}?</p>
+
+<form action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="submit" action="" value="Так, видалити" />
+</form>
+
+{% endblock %}

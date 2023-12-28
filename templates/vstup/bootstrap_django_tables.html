@@ -1,0 +1,24 @@
+{% extends "vstup/base.html" %}
+{% block content %}
+
+{% load django_tables2 %}
+{% load bootstrap5 %}
+
+<!doctype html>
+<html>
+
+<body>
+
+{% if filter %}
+<form action="" method="get" class="form form-inline">
+    {% bootstrap_form filter.form layout='inline' %}
+    {% bootstrap_button 'filter' %}
+</form>
+{% endif %}
+
+
+{% render_table filter.qs %}  {# Застосувати фільтрований queryset #}
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "vstup/base.html" %}
+{% block content %}
+
+<div class="row text-start lh-2">
+  <h5>Список кафедр для редагування</h5>
+</div>
+
+<div class="row">
+  <div class="col-2 "></div>
+  <!-- <a href="{ % url 'department_create' % }">Додати</a> -->
+  <a href="/department/create/">Додати - </a> ,
+  <div class="col-8 ">
+    <table class="table table-striped table-bordered text-start">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Скороч.</th>
+          <th>Назва</th>
+          <th>Редагувати</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if departments %}
+        {% for item in departments.all %}
+        <tr>
+          <td>{{item.id}}</td>
+          <td>{{item.shortName}}</td>
+          <td>{{item.name}}</td>
+          <td>
+            <a href="/department/update/{{item.id}}">Змінити </a> ,
+            <a href="/department/delete/{{item.id}}">Видалити </a>
+          </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <p> Нічого нема</p>
+        {% endif %}
+        <tbody>
+        </table>
+      </div>
+      <div class="col-2"></div>
+    </div>
+    {% endblock %}

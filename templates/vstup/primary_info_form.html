@@ -1,0 +1,135 @@
+{% extends "vstup/base.html" %}
+{% block content %}
+
+<form action="" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+
+  {% if form.errors %}
+         <p class="text-danger">Помилка валідації форми. Перевірте введені дані.</p>
+       {% endif %}
+
+  <table class="text-start">
+    <tr>
+      <td colspan="2" style="text-align: center;"><h4>Інформація про вступника</h4></td>
+    </tr>
+    <tr>
+      <td>{{ form.last_name.label_tag }}</td>
+      <td>{{ form.last_name }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.name.label_tag }}</td>
+      <td>{{ form.name }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.patronymic.label_tag }}</td>
+      <td>{{ form.patronymic }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.phone.label_tag }}</td>
+      <td>{{ form.phone }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.email.label_tag }}</td>
+      <td>{{ form.email }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.gender.label_tag }}</td>
+      <td>{{ form.gender }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.birth_date.label_tag }}</td>
+      <td>{{ form.birth_date }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.specialty.label_tag }}</td>
+      <td>{{ form.specialty }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.education_form.label_tag }}</td>
+      <td>{{ form.education_form }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.funding_source.label_tag }}</td>
+      <td>{{ form.funding_source }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.department.label_tag }}</td>
+      <td>{{ form.department }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.scientific_advisor.label_tag }}</td>
+      <td>{{ form.scientific_advisor }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.foreign_language.label_tag }}</td>
+      <td>{{ form.foreign_language }}</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align: center;"><h4>Інформація про отриману освіту</h4></td>
+    </tr>
+    <tr>
+      <td>{{ form.university.label_tag }}</td>
+      <td>{{ form.university }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.level.label_tag }}</td>
+      <td>{{ form.level }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.diploma.label_tag }}</td>
+      <td>{{ form.diploma }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.diploma_date.label_tag }}</td>
+      <td>{{ form.diploma_date }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.diploma_specialty.label_tag }}</td>
+      <td>{{ form.diploma_specialty }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.diploma_avg.label_tag }}</td>
+      <td>{{ form.diploma_avg }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.diploma_with_honors.label_tag }}</td>
+      <td>{{ form.diploma_with_honors }}</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align: center;"><h4>Інша інформація</h4></td>
+    </tr>
+    <tr>
+      <td>{{ form.military_registered.label_tag }}</td>
+      <td>{{ form.military_registered }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.tck.label_tag }}</td>
+      <td>{{ form.tck }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.dormitory_accommodation.label_tag }}</td>
+      <td>{{ form.dormitory_accommodation }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.approval_notification.label_tag }}</td>
+      <td>{{ form.approval_notification }} </td>
+    </tr>
+    <tr>
+      <td>{{ form.electronic_queue.label_tag }}</td>
+      <td>{{ form.electronic_queue }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.personal_data_processing.label_tag }}</td>
+      <td>{{ form.personal_data_processing }}</td>
+    </tr>
+  </table>
+
+
+  <input type="submit" value="Зберегти" />
+</form>
+
+{% endblock %}
+
+
+

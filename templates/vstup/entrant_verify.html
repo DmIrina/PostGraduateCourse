@@ -1,0 +1,13 @@
+{% extends "vstup/base.html" %}
+{% block content %}
+<div class="row text-start lh-2">
+     <h3>Верифікація відомостей про вступника</h3>
+</div>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="text-start">
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Підтвердити верифікацію" />
+</form>
+{% endblock %}

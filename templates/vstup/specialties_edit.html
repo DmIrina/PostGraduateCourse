@@ -1,0 +1,41 @@
+{% extends "vstup/base.html" %}
+
+{% block content %}
+
+<div class="row text-start lh-2">
+     <h5>Список спеціальностей для редагування </h5>
+</div>
+
+    <div class="row">
+    <div class="col-2 "></div>
+        <a href="/specialty_add/{{specialty_add}}">Додати спеціальність</a>
+    <div class="col-8 ">
+    <table class="table table-striped table-bordered text-start">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Код</th>
+                <th>Назва</th>
+                <th>Редагувати</th>
+            </tr>
+        </thead>
+       <tbody>
+       {% if specialty %}
+         {% for item in specialty.all %}
+           <tr>
+              <td>{{item.id}}</td>
+              <td>{{item.code}}</td>
+              <td>{{item.name}}</td>
+              <td><a href="/specialty_edit/{{item.id}}">Змінити</a> ,
+                  <a href="/specialty_delete/{{item.id}}">Видалити</a></td>
+           </tr>
+         {% endfor %}
+       {% else %}
+         <p> Нічого немає</p>
+       {% endif %}
+        <tbody>
+    </table>
+    </div>
+    <div class="col-2"></div>
+    </div>
+{% endblock %}

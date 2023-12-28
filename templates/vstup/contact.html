@@ -1,0 +1,58 @@
+{% extends "vstup/base.html" %}
+<head>
+{% load static %}
+</head>
+
+{% block content %}
+<div class="container-fluid">
+      <div class="row my-2 text-center">
+          <div class="col-5"></div>
+          <div class="col-1 text-center">
+            <img src="{% static 'images/sun.jpg' %}">
+          </div>
+          <div class="col-5"></div>
+      </div>
+
+      <div class="row my-2 text-primary text-center">
+          <h3>{{ name }}</h3>
+      </div>
+      <div class="row my-2 text-muted ">
+         <h4 class="text-center">{{ text_head }}</h4>
+      </div>
+
+     <div class="row my-2">
+         <!-- пусті колонки зліва від таблиці-->
+        <div class="col-3"></div>
+
+        <div class="col-6">
+        <table class="table table-striped table-bordered text-start">
+            <thead>
+                <tr>
+                    <th>Адреса</th>
+                    <th>Телефон</th>
+                    <th>e-mail</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ address }}</td>
+                <td>{{ tel }}</td>
+                <td>{{ email }}</td>
+            </tr>
+            <tbody>
+        </table>
+        </div>
+        <!-- пусті колонки справа від таблиці-->
+        <div class="col-3"></div>
+
+         <!-- мапа-->
+         <div class="row my-2 text-center">
+             <div class="col-2"></div>
+             <div class="col-8">
+             <img src="{% static 'images/address.jpg' %}" class="img-fluid" >
+             </div>
+             <div class="col-2"></div>
+      </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "vstup/univer/base.html" %}
+
+{% block title %}Add New Employee Records{% endblock title %}
+
+{% block content %}
+<div class="col-md-12">
+    <form method="POST" class="post-form" action="/updateuniver/{{univer.id}}">
+    {% csrf_token %}
+    <div class="container">
+        <div class="col-12">
+            <h3>Update Details</h3>
+        </div>
+        <div class="mb-3">
+            <label>univer ID:</label>
+            <input type="text" class="form-control" name="id" id="id_id" required maxlength="20" value="{{ univer.id }}"/>
+        </div>
+        <div class="mb-3">
+            <label>Name:</label>
+            <input type="text" class="form-control" name="name" id="id_name" required maxlength="100" value="{{ univer.name }}" />
+        </div>
+                <div class="mb-3">
+            <label>enName:</label>
+            <input type="text" class="form-control" name="enName" id="id_enName" required maxlength="100" value="{{ univer.enName }}" />
+        </div>
+                <div class="mb-3">
+            <label>shortName:</label>
+            <input type="text" class="form-control" name="shortName" id="id_shortName" required maxlength="100" value="{{ univer.shortName }}" />
+        </div>
+                <div class="mb-3">
+            <label>educationTypeName:</label>
+            <input type="text" class="form-control" name="educationTypeName" id="id_educationTypeName" required maxlength="100" value="{{ univer.educationTypeName }}" />
+        </div>
+                <div class="mb-3">
+            <label>financingTypeName:</label>
+            <input type="text" class="form-control" name="financingTypeName" id="id_financingTypeName" required maxlength="100" value="{{ univer.financingTypeName }}" />
+        </div>
+                <div class="mb-3">
+            <label>location:</label>
+            <input type="text" class="form-control" name="location" id="id_location" required maxlength="100" value="{{ univer.location }}" />
+        </div>
+
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success btn-lg">Update</button>
+        </div>
+    </div>
+    </form>
+</div>
+{% endblock content %}

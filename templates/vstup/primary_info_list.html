@@ -1,0 +1,60 @@
+{% extends "vstup/base.html" %}
+{% block content %}
+
+<div class="row text-start lh-2">
+  <h5>Список вступників</h5>
+</div>
+
+<div class="row">
+  <a href="/primary_info_create">Додати</a>
+
+  <div class="col-8 ">
+    <table class="table table-striped table-bordered text-start">
+      <thead>
+        <tr>
+          <th>Прізвище</th>
+          <th>Ім'я</th>
+          <th>По-батькові</th>
+          <th>Спец</th>
+          <th>Форма</th>
+          <th>Фінанс</th>
+          <th>Кафедра</th>
+          <th>Дата, час</th>
+          <th>Вериф</th>
+          <th>Дія</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if primary_info_list %}
+        {% for item in primary_info_list.all %}
+        <tr>
+          <td>{{item.last_name}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.patronymic}}</td>
+          <td>{{item.specialty.code}}</td>
+          <td>{{item.education_form.shortName}}</td>
+          <td>{{item.funding_source.shortName}}</td>
+          <td>{{item.department.shortName}}</td>
+          <td>{{item.electronic_queue.formated_slot}}</td>
+          <td>{% if item.verified %} &#x2705
+          {% else %}
+            -
+          {% endif %}
+          </td>
+          <td>
+            {% if not item.verified %}
+            <a href="/primary_info/update/{{item.id}}">Змінити </a>
+            <a href="/primary_info/delete/{{item.id}}">Видалити </a>
+            <a href="/entrant_verify/{{item.id}}">Верифікувати</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        {% else %}
+        <p> Нічого нема</p>
+        {% endif %}
+        <tbody>
+        </table>
+      </div>
+      <div class="col-2"></div>
+    </div>
+    {% endblock %}

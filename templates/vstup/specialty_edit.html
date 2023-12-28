@@ -1,0 +1,23 @@
+{% extends "vstup/base.html" %}
+{% block content %}
+<div class="row text-start lh-2">
+     <h3>Редагувати спеціальність</h3>
+</div>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="text-start">
+    {% for field in form %}
+        <tr>
+            <th>{{ field.label_tag }}
+                {{ field.errors }}
+            </th>
+            <th>{{ field }}</th>
+        </tr>
+    {% endfor %}
+        <th>
+        <button type="submit">Зберегти</button>
+        </th>
+    </table>
+</form>
+{% endblock %}

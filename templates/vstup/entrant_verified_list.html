@@ -1,0 +1,57 @@
+{# список вступників, що пройшли верифікацію #}
+
+{% extends "vstup/base.html" %}
+{% block content %}
+
+<div class="row text-start lh-2">
+  <h5>Список вступників, що пройшли верифікацію</h5>
+  {% if list %}
+    <p>Всього: {{ list.all|length }}</p>
+  {% else %}
+    <p> Нічого нема</p>
+  {% endif %}
+</div>
+
+<div class="row">
+  <div class="col-8 ">
+    <table class="table table-striped table-bordered text-start">
+      <thead>
+        <tr>
+          <th>Прізвище</th>
+          <th>Ім'я</th>
+          <th>По-батькові</th>
+          <th>Спец</th>
+          <th>Форма</th>
+          <th>Фінанс</th>
+          <th>Кафедра</th>
+          <th>Телефон</th>
+          <th>email</th>
+          <th>Дія</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if list %}
+        {% for item in list.all %}
+        <tr>
+          <td>{{item.last_name}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.patronymic}}</td>
+          <td>{{item.specialty.code}}</td>
+          <td>{{item.education_form.shortName}}</td>
+          <td>{{item.funding_source.shortName}}</td>
+          <td>{{item.department.shortName}}</td>
+          <td>{{item.phone}}</td>
+          <td>{{item.email}}</td>
+          <td>
+            <a href="/entrant_verified_edit/{{item.id}}">Внести дані</a></td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <p> Нічого нема</p>
+        {% endif %}
+        <tbody>
+        </table>
+      </div>
+      <div class="col-2"></div>
+    </div>
+    {% endblock %}

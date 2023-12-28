@@ -1,0 +1,46 @@
+{% extends "vstup/base.html" %}
+{% block content %}
+
+{% if form.errors %}
+  <p>Ваше ім'я користувача та пароль не збігаються. Спробуйте ще раз.</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <p> Ваш обліковий запис не має доступу до цієї сторінки. Увійдіть під другим обліковим записом</p>
+  {% else %}
+    <p> Авторизуйтесь, щоб побачити цю сторінку</p>
+  {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+
+  <div class="row my-2 text-center">
+    <div class="col-4">
+      <table class="table table-bordered my-2 text-start">
+        <tr>
+          <td>{{ form.username.label_tag }}</td>
+          <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.password.label_tag }}</td>
+          <td>{{ form.password }}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-8"></div>
+  </div>
+
+  <div class="row my-2 text-start">
+    <div class="col-4">
+      <input type="submit" value="Вход" />
+      <input type="hidden" name="next" value="{{ next }}" />
+      {# Передбачається, що подання password_reset у URLconf налаштуване #}
+      <p><a href="{% url 'password_reset' %}"> Загубили пароль?</a></p>
+    </div>
+  </div>
+  <div class="col-8"></div>
+
+</form>
+{% endblock %}
