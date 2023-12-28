@@ -1,9 +1,9 @@
 Django
 
-deactivate 	— Выход из текущей виртуальной среды Python
-workon 		— Список доступных виртуальных сред
-workon name_env 		— Активация виртуальной среды Python
-rmvirtualenv name_env 	— Удаление виртуальной среды.
+deactivate 	— вихід з поточного віртуального середовища Python
+workon 		— список доступних віртуальних середовищ
+workon name_env 		— активація віртуального середовища Python
+rmvirtualenv name_env 	— видалення віртуального середовища.
 
 pip3 install django
 py -m django --version
